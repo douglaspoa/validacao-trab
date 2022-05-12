@@ -42,10 +42,10 @@ public class CentroDistribuicao {
     }
 
      public static void main(String[] args) {
-         int aditivo = 125;
-         int alcool1 = 375;
-         int alcool2 = 375;
-         int gasolina = 2500;
+         int aditivo = 500 ;
+         int alcool1 = 1000;
+         int alcool2 = 1000;
+         int gasolina = 5000;
          int combustivel = 100;
          CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
                  aditivo,
@@ -141,6 +141,7 @@ public class CentroDistribuicao {
         return qtdade;
     }
 
+
     public int recebeAlcool(int qtdade) {
         if (qtdade < 0) return -1;
 
@@ -157,10 +158,13 @@ public class CentroDistribuicao {
         this.tAlcool2 += qtdade / 2;
         return qtdade - (qtdade % 2);
     }
+    // TODO: Mudanças realizadas: foi realizado a mudança no retorno dos arrays ao inves de passar o valo que foi removido de cada combustivel retornamos o valor restante de cada combustivel
+    // TODO: Também não estava funcionando quando tinhamos que realizar apenas metade da entrega ele considerava a entrega inteira.
 
     public int[] encomendaCombustivel(int qtdade, TIPOPOSTO tipoPosto) {
         if (qtdade < 0) return new int[] {-7, 0, 0, 0};
-        
+
+
         int qtdRequeridaAditivo = (int)(percAditivo * qtdade)/100;
         int qtdRequeridaGasolina = (int)(percGasolina * qtdade)/100;
         int qtdRequeridaAlcool = (int)(percAlcool * qtdade)/100;
@@ -175,19 +179,21 @@ public class CentroDistribuicao {
             setGasolina(qtdRequeridaGasolina);
             setAlcool1((int)qtdRequeridaAlcool/2);
             setAlcool2((int)qtdRequeridaAlcool/2);
-            return new int[] {qtdRequeridaAditivo, qtdRequeridaGasolina, 
-                              (int)(qtdRequeridaAlcool/2), (int)(qtdRequeridaAlcool/2)};
+
+            return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
         }
 
         if (getSituacao() == SITUACAO.SOBRAVISO) {
             if (tipoPosto == TIPOPOSTO.COMUM) {
-                setAditivo((int)0.5 * qtdRequeridaAditivo);
-                setGasolina((int)0.5 *qtdRequeridaGasolina);
-                setAlcool1((int)0.5 * qtdRequeridaAlcool/2);
-                setAlcool2((int)0.5 * qtdRequeridaAlcool/2);
+                qtdRequeridaAditivo = qtdRequeridaAditivo / 2;
+                qtdRequeridaGasolina = qtdRequeridaGasolina / 2;
+                qtdRequeridaAlcool = qtdRequeridaAlcool / 2;
+                setAditivo(qtdRequeridaAditivo);
+                setGasolina(qtdRequeridaGasolina);
+                setAlcool1((int)qtdRequeridaAlcool/2);
+                setAlcool2((int)qtdRequeridaAlcool/2);
 
-                return new int[] {(int)0.5 * qtdRequeridaAditivo, (int)0.5 * qtdRequeridaGasolina, 
-                              (int)(0.5 * qtdRequeridaAlcool/2), (int)(0.5 * qtdRequeridaAlcool/2)};
+                return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
             }
 
             if (tipoPosto == TIPOPOSTO.ESTRATEGICO) {
@@ -195,8 +201,7 @@ public class CentroDistribuicao {
                 setGasolina(qtdRequeridaGasolina);
                 setAlcool1((int)qtdRequeridaAlcool/2);
                 setAlcool2((int)qtdRequeridaAlcool/2);
-                return new int[] {qtdRequeridaAditivo, qtdRequeridaGasolina, 
-                                (int)(qtdRequeridaAlcool/2), (int)(qtdRequeridaAlcool/2)};
+                return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
             } 
         }
 
@@ -206,13 +211,16 @@ public class CentroDistribuicao {
             }
 
             if (tipoPosto == TIPOPOSTO.ESTRATEGICO) {
-                setAditivo((int)0.5 * qtdRequeridaAditivo);
-                setGasolina((int)0.5 *qtdRequeridaGasolina);
-                setAlcool1((int)0.5 * qtdRequeridaAlcool/2);
-                setAlcool2((int)0.5 * qtdRequeridaAlcool/2);
+                qtdRequeridaAditivo = qtdRequeridaAditivo / 2;
+                qtdRequeridaGasolina = qtdRequeridaGasolina / 2;
+                qtdRequeridaAlcool = qtdRequeridaAlcool / 2;
 
-                return new int[] {(int)0.5 * qtdRequeridaAditivo, (int)0.5 * qtdRequeridaGasolina, 
-                              (int)(0.5 * qtdRequeridaAlcool/2), (int)(0.5 * qtdRequeridaAlcool/2)};
+                setAditivo(qtdRequeridaAditivo);
+                setGasolina(qtdRequeridaGasolina);
+                setAlcool1((int)qtdRequeridaAlcool/2);
+                setAlcool2((int)qtdRequeridaAlcool/2);
+
+                return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
             } 
         }
 

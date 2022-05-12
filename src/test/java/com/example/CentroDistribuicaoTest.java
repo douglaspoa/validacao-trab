@@ -4,20 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 public class CentroDistribuicaoTest {
-    private int aditivo;
-    private int gasolina;
-    private int alcool1;
-    private int alcool2;
-    private int resultado;
-
     // Teste Construtor
     @Test
     @DisplayName("Teste Construtor - Valor de entrada valido")
@@ -135,9 +124,6 @@ public class CentroDistribuicaoTest {
         Assertions.assertEquals(CentroDistribuicao.SITUACAO.SOBRAVISO, centroDistribuicao.getSituacao());
     }
 
-
-
-
     // Teste Baseado  em especificação
     @Test
     @DisplayName("Teste baseado em especificação  - Encomenda Tipo de posto: Estrategico - NORMAL - Entrega normal")
@@ -154,7 +140,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -178,7 +164,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -205,7 +191,7 @@ public class CentroDistribuicaoTest {
         );
 
 
-        aditivo = aditivo - (combustivel2 * 7 / 100);
+        aditivo = aditivo - (combustivel2 * 5 / 100);
         gasolina = gasolina - (combustivel2 * 70 / 100);
         alcool1 = alcool1 - (combustivel2 * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel2 * 25 / 100) / 2;
@@ -229,7 +215,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -274,7 +260,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel2 * 7 / 100);
+        aditivo = aditivo - (combustivel2 * 5 / 100);
         gasolina = gasolina - (combustivel2 * 70 / 100);
         alcool1 = alcool1 - (combustivel2 * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel2 * 25 / 100) / 2;
@@ -299,7 +285,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -323,7 +309,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -336,10 +322,10 @@ public class CentroDistribuicaoTest {
     @DisplayName("Teste baseado em valor limite <50% && >= 25%  - Encomenda - Tipo de posto: COMUM - SOBRAVISO -  ENTREGA METADE")
     void testEncomenda9() {
         // 250,5000,625,625
-        int aditivo = 250;
-        int alcool1 = 625;
-        int alcool2 = 625;
-        int gasolina = 5000;
+        int aditivo = 249;
+        int alcool1 = 624;
+        int alcool2 = 624;
+        int gasolina = 4999;
         int combustivel = 250;
         int combustivel2 = 125;
         CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
@@ -348,7 +334,8 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel2 * 7 / 100);
+
+        aditivo = aditivo - (combustivel2 * 5 / 100);
         gasolina = gasolina - (combustivel2 * 70 / 100);
         alcool1 = alcool1 - (combustivel2 * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel2 * 25 / 100) / 2;
@@ -372,7 +359,7 @@ public class CentroDistribuicaoTest {
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel * 7 / 100);
+        aditivo = aditivo - (combustivel * 5 / 100);
         gasolina = gasolina - (combustivel * 70 / 100);
         alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
         alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
@@ -386,10 +373,10 @@ public class CentroDistribuicaoTest {
     @DisplayName("Teste baseado em valor limite < 25%  - Encomenda - Tipo de posto: COMUM - SOBRAVISO -  ENTREGA METADE")
     void testEncomenda11() {
         // 125,2500,375,375
-        int aditivo = 125;
-        int alcool1 = 375;
-        int alcool2 = 375;
-        int gasolina = 2500;
+        int aditivo = 124;
+        int alcool1 = 374;
+        int alcool2 = 374;
+        int gasolina = 2499;
         int combustivel = 100;
         CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
                 aditivo,
@@ -411,17 +398,16 @@ public class CentroDistribuicaoTest {
         int alcool2 = 375;
         int gasolina = 2500;
         int combustivel = 150;
-        int combustivel2 = 75;
         CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
                 aditivo,
                 gasolina,
                 alcool1,
                 alcool2
         );
-        aditivo = aditivo - (combustivel2 * 7 / 100);
-        gasolina = gasolina - (combustivel2 * 70 / 100);
-        alcool1 = alcool1 - (combustivel2 * 25 / 100) / 2;
-        alcool2 = alcool2 - (combustivel2 * 25 / 100) / 2;
+        aditivo = aditivo - (combustivel * 5 / 100);
+        gasolina = gasolina - (combustivel * 70 / 100);
+        alcool1 = alcool1 - (combustivel * 25 / 100) / 2;
+        alcool2 = alcool2 - (combustivel * 25 / 100) / 2;
 
         centroDistribuicao.defineSituacao();
         Assertions.assertArrayEquals( new int[] {aditivo, gasolina, alcool1, alcool2}, centroDistribuicao.encomendaCombustivel(combustivel, CentroDistribuicao.TIPOPOSTO.ESTRATEGICO));
@@ -441,6 +427,32 @@ public class CentroDistribuicaoTest {
         Assertions.assertEquals(0, centroDistribuicao.recebeGasolina(100));
     }
 
+    @Test
+    @DisplayName("Teste recebimento de aditivo, sem espaço no tanque")
+    void recebeDieselTest1() {
+        CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
+                500,
+                10000,
+                375,
+                375
+        );
+
+        Assertions.assertEquals(0, centroDistribuicao.recebeAditivo(100));
+    }
+
+    @Test
+    @DisplayName("Teste recebimento de alcool, sem espaço no tanque")
+    void recebeAlcoolTest1() {
+        CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
+                500,
+                10000,
+                1250,
+                1250
+        );
+
+        Assertions.assertEquals(0, centroDistribuicao.recebeAlcool(100));
+    }
+
 
 
     // Testes Parametrizados
@@ -455,13 +467,74 @@ public class CentroDistribuicaoTest {
                 100
         );
 
+        int gasolina = centroDistribuicao.getGasolina();
+        int gasolinaTotal = centroDistribuicao.getGasolina() + argument;
         int expected = -1;
+
         if (argument > 0) {
-            expected = centroDistribuicao.getGasolina() + argument;
+            expected = argument;
+        }
+
+        if (gasolinaTotal > CentroDistribuicao.MAX_ALCOOL) {
+            expected = (CentroDistribuicao.MAX_ALCOOL + argument) - gasolina;
         }
 
         Assertions.assertEquals(centroDistribuicao.recebeGasolina(argument), expected);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = { 100, 200, 300, -1 })
+    @DisplayName("Teste Parametrizado aditivo")
+    public void recebeAditivoTest(int argument) {
+        CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
+                100,
+                100,
+                100,
+                100
+        );
+
+        int aditivo = centroDistribuicao.getAditivo();
+        int aditivoTotal = centroDistribuicao.getAditivo() + argument;
+        int expected = -1;
+
+        if (argument > 0) {
+            expected = argument;
+        }
+
+        if (aditivoTotal > CentroDistribuicao.MAX_ALCOOL) {
+            expected = (CentroDistribuicao.MAX_ALCOOL + argument) - aditivo;
+        }
+
+        Assertions.assertEquals(centroDistribuicao.recebeAditivo(argument), expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = { 100, 200, 300, -1 })
+    @DisplayName("Teste Parametrizado Alcool")
+    public void recebeAlcoolTest(int argument) {
+        CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
+                100,
+                100,
+                100,
+                100
+        );
+
+        int alcool = centroDistribuicao.getAlcool1() + centroDistribuicao.getAlcool2();
+        int alcoolTotal = centroDistribuicao.getAlcool1() + centroDistribuicao.getAlcool2() + argument;
+        int expected = -1;
+
+        if (argument > 0) {
+            expected = argument;
+        }
+
+        if (alcoolTotal > CentroDistribuicao.MAX_ALCOOL) {
+            expected = (CentroDistribuicao.MAX_ALCOOL + argument) - alcool;
+        }
+
+        Assertions.assertEquals(centroDistribuicao.recebeAlcool(argument), expected);
+    }
+
+
 
 
 
