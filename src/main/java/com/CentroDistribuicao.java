@@ -1,4 +1,4 @@
-package com.example;
+package com;
 
 import java.util.*;
 
@@ -15,13 +15,13 @@ public class CentroDistribuicao {
     private int tAlcool1 = 0;
     private int tAlcool2 = 0;
 
-    private final int percAditivo = 5; 
-    private final int percGasolina = 70; 
-    private final int percAlcool = 25; 
+    private final int percAditivo = 5;
+    private final int percGasolina = 70;
+    private final int percAlcool = 25;
 
     private SITUACAO situacao = SITUACAO.NORMAL;
 
-    public CentroDistribuicao (int tAditivo, int tGasolina, int tAlcool1, int tAlcool2) { 
+    public CentroDistribuicao (int tAditivo, int tGasolina, int tAlcool1, int tAlcool2) {
         if (tAditivo > MAX_ADITIVO) throw new IllegalArgumentException("Valor Inválido!");
         else if (tAditivo < 0) throw new IllegalArgumentException("Valor Inválido!");
         else this.tAditivo = tAditivo;
@@ -41,36 +41,36 @@ public class CentroDistribuicao {
         this.defineSituacao();
     }
 
-     public static void main(String[] args) {
-         int aditivo = 500 ;
-         int alcool1 = 1000;
-         int alcool2 = 1000;
-         int gasolina = 5000;
-         int combustivel = 100;
-         CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
-                 aditivo,
-                 gasolina,
-                 alcool1,
-                 alcool2
-         );
+    public static void main(String[] args) {
+        int aditivo = 500 ;
+        int alcool1 = 1000;
+        int alcool2 = 1000;
+        int gasolina = 5000;
+        int combustivel = 100;
+        CentroDistribuicao centroDistribuicao = new CentroDistribuicao(
+                aditivo,
+                gasolina,
+                alcool1,
+                alcool2
+        );
 
-         System.out.println(Arrays.toString(centroDistribuicao.encomendaCombustivel(combustivel, TIPOPOSTO.COMUM)));
+        System.out.println(Arrays.toString(centroDistribuicao.encomendaCombustivel(combustivel, TIPOPOSTO.COMUM)));
     }
 
     public void defineSituacao(){
-        if 
+        if
         (
-            this.getAditivo() < 0.25 * MAX_ADITIVO ||
-            this.getGasolina() < 0.25 * MAX_GASOLINA ||
-            this.getAlcool1() < 0.25 * MAX_ALCOOL / 2 ||
-            this.getAlcool2() < 0.25 * MAX_ALCOOL / 2
+                this.getAditivo() < 0.25 * MAX_ADITIVO ||
+                        this.getGasolina() < 0.25 * MAX_GASOLINA ||
+                        this.getAlcool1() < 0.25 * MAX_ALCOOL / 2 ||
+                        this.getAlcool2() < 0.25 * MAX_ALCOOL / 2
         ) { this.situacao = SITUACAO.EMERGENCIA; }
-        else if 
+        else if
         (
-            this.getAditivo() < 0.5 * MAX_ADITIVO ||
-            this.getGasolina() < 0.5 * MAX_GASOLINA ||
-            this.getAlcool1() < 0.5 * MAX_ALCOOL / 2 ||
-            this.getAlcool2() < 0.5 * MAX_ALCOOL / 2
+                this.getAditivo() < 0.5 * MAX_ADITIVO ||
+                        this.getGasolina() < 0.5 * MAX_GASOLINA ||
+                        this.getAlcool1() < 0.5 * MAX_ALCOOL / 2 ||
+                        this.getAlcool2() < 0.5 * MAX_ALCOOL / 2
         ) { this.situacao = SITUACAO.SOBRAVISO; }
         else { this.situacao = SITUACAO.NORMAL; }
     }
@@ -84,19 +84,19 @@ public class CentroDistribuicao {
     }
 
     public void setGasolina(int subGasolina) {
-        this.tGasolina -= subGasolina; 
+        this.tGasolina -= subGasolina;
     }
 
     public void setAditivo(int subAditivo) {
-        this.tAditivo -= subAditivo; 
+        this.tAditivo -= subAditivo;
     }
-    
+
     public void setAlcool1(int subAlcool) {
-        this.tAlcool1 -= subAlcool; 
+        this.tAlcool1 -= subAlcool;
     }
-    
+
     public void setAlcool2(int subAlcool) {
-        this.tAlcool2 -= subAlcool; 
+        this.tAlcool2 -= subAlcool;
     }
 
     public int getAditivo(){
@@ -121,7 +121,7 @@ public class CentroDistribuicao {
             this.tAditivo += espacoTanque;
             return (qtdade - espacoTanque);
         }
-        
+
         this.tAditivo += qtdade;
         return qtdade;
     }
@@ -136,7 +136,7 @@ public class CentroDistribuicao {
             this.tGasolina += espacoTanque;
             return (qtdade - espacoTanque);
         }
-        
+
         this.tGasolina += qtdade;
         return qtdade;
     }
@@ -153,7 +153,7 @@ public class CentroDistribuicao {
             this.tAlcool2 += espacoTanque / 2;
             return (qtdade - espacoTanque);
         }
-        
+
         this.tAlcool1 += qtdade / 2;
         this.tAlcool2 += qtdade / 2;
         return qtdade - (qtdade % 2);
@@ -169,9 +169,9 @@ public class CentroDistribuicao {
         int qtdRequeridaGasolina = (int)(percGasolina * qtdade)/100;
         int qtdRequeridaAlcool = (int)(percAlcool * qtdade)/100;
 
-        if (qtdRequeridaAditivo > getAditivo() || 
-            qtdRequeridaGasolina > getGasolina() ||
-            qtdRequeridaAlcool > getAlcool1() + getAlcool2()
+        if (qtdRequeridaAditivo > getAditivo() ||
+                qtdRequeridaGasolina > getGasolina() ||
+                qtdRequeridaAlcool > getAlcool1() + getAlcool2()
         ) return new int[] {-21, 0, 0, 0};
 
         if (getSituacao() == SITUACAO.NORMAL) {
@@ -202,7 +202,7 @@ public class CentroDistribuicao {
                 setAlcool1((int)qtdRequeridaAlcool/2);
                 setAlcool2((int)qtdRequeridaAlcool/2);
                 return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
-            } 
+            }
         }
 
         if (getSituacao() == SITUACAO.EMERGENCIA) {
@@ -221,7 +221,7 @@ public class CentroDistribuicao {
                 setAlcool2((int)qtdRequeridaAlcool/2);
 
                 return new int[] {getAditivo(), getGasolina(), getAlcool1(), getAlcool2()};
-            } 
+            }
         }
 
         return new int[] {0};

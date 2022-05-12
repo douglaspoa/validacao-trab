@@ -1,5 +1,6 @@
 package com.example;
 
+import com.CentroDistribuicao;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
