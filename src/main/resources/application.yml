@@ -1,0 +1,7 @@
+micronaut:
+  application:
+    name: validacao1
+netty:
+  default:
+    allocator:
+      max-order: 3
